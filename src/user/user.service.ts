@@ -9,8 +9,6 @@ export class UserService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
   async createUser(registerUserDto: RegisterDto) {
     try {
-        console.log("Creating user");
-        
       const createdUser = await this.userModel.create({
         fullName: registerUserDto.fullName,
         email: registerUserDto.email,
@@ -30,5 +28,8 @@ export class UserService {
       }
       throw error;
     }
+  }
+  async findByEmail(email: string) {
+    return this.userModel.findOne({ email }).exec();
   }
 }
