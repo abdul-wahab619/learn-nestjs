@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 import { RegisterDto } from './dto/registerUser.dto';
 import { LoginDto } from './dto/loginUser.dto';
 import { AuthGuard } from './auth.guard';
-import { UserService } from 'src/user/user.service';
+import { UserService } from 'src/user/user.service'; 
 
 @Controller('auth')
 export class AuthController {
@@ -36,8 +36,6 @@ export class AuthController {
     const userId = req.user.sub;
     //remove password from user object
     const user = await this.userService.getUserById(userId);
-    console.log(user);
-
     return user;
   }
 }
